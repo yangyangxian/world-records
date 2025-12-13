@@ -7,6 +7,11 @@ import tailwindcss from '@tailwindcss/vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
 
 const config = defineConfig({
+  resolve: {
+    alias: {
+      'tiny-warning': 'tiny-warning/dist/tiny-warning.esm.js',
+    },
+  },
   plugins: [
     devtools(),
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
