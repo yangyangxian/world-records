@@ -1,0 +1,7 @@
+@layer utilities {
+  /* Utility: center content both axes */
+  .center {
+    align-items: center;
+    justify-content: center;
+  }
+}
