@@ -4,4 +4,12 @@
     align-items: center;
     justify-content: center;
   }
+
+  .bg-color {
+    background: rgb(170, 130, 230);
+  }
+
+  .bg-cyan {
+    background: rgb(33, 199, 243);
+  }
 }

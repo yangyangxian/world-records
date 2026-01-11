@@ -1,0 +1,18 @@
+{
+  "make": "Apple",
+  "model": "iPhone 16 Pro",
+  "software": "18.7.1",
+  "datetime": "2025:10:06 18:17:53",
+  "exposure_time": "1/506",
+  "aperture": "f/1.8",
+  "iso": 80,
+  "focal_length": "6.764999865652793 mm",
+  "focal_length_35mm": "24 mm",
+  "width": "1024px",
+  "height": "768px",
+  "gps": {
+    "lat": 29.43161388888889,
+    "lon": 107.69374166666667,
+    "alt": "1409.7261966031908 m"
+  }
+}

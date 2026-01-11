@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TopicsHighestMountainsRouteImport } from './routes/topics/highest-mountains'
+import { Route as ApiPunkSongsRouteImport } from './routes/api/punk-songs'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiNamesRouteImport } from './routes/demo/api.names'
@@ -21,6 +23,16 @@ import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ss
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TopicsHighestMountainsRoute = TopicsHighestMountainsRouteImport.update({
+  id: '/topics/highest-mountains',
+  path: '/topics/highest-mountains',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPunkSongsRoute = ApiPunkSongsRouteImport.update({
+  id: '/api/punk-songs',
+  path: '/api/punk-songs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
@@ -61,6 +73,8 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/punk-songs': typeof ApiPunkSongsRoute
+  '/topics/highest-mountains': typeof TopicsHighestMountainsRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -71,6 +85,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/punk-songs': typeof ApiPunkSongsRoute
+  '/topics/highest-mountains': typeof TopicsHighestMountainsRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -82,6 +98,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/punk-songs': typeof ApiPunkSongsRoute
+  '/topics/highest-mountains': typeof TopicsHighestMountainsRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -94,6 +112,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/api/punk-songs'
+    | '/topics/highest-mountains'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -104,6 +124,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/api/punk-songs'
+    | '/topics/highest-mountains'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -114,6 +136,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/api/punk-songs'
+    | '/topics/highest-mountains'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -125,6 +149,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiPunkSongsRoute: typeof ApiPunkSongsRoute
+  TopicsHighestMountainsRoute: typeof TopicsHighestMountainsRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
@@ -141,6 +167,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/topics/highest-mountains': {
+      id: '/topics/highest-mountains'
+      path: '/topics/highest-mountains'
+      fullPath: '/topics/highest-mountains'
+      preLoaderRoute: typeof TopicsHighestMountainsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/punk-songs': {
+      id: '/api/punk-songs'
+      path: '/api/punk-songs'
+      fullPath: '/api/punk-songs'
+      preLoaderRoute: typeof ApiPunkSongsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/start/server-funcs': {
@@ -197,6 +237,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiPunkSongsRoute: ApiPunkSongsRoute,
+  TopicsHighestMountainsRoute: TopicsHighestMountainsRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
