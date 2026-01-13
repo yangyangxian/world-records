@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ContentOldIndexRouteImport } from './routes/content-old-index'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TopicsHighestMountainsRouteImport } from './routes/topics/highest-mountains'
 import { Route as ApiPunkSongsRouteImport } from './routes/api/punk-songs'
@@ -20,6 +21,11 @@ import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr
 import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
+const ContentOldIndexRoute = ContentOldIndexRouteImport.update({
+  id: '/content-old-index',
+  path: '/content-old-index',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -73,6 +79,7 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/content-old-index': typeof ContentOldIndexRoute
   '/api/punk-songs': typeof ApiPunkSongsRoute
   '/topics/highest-mountains': typeof TopicsHighestMountainsRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/content-old-index': typeof ContentOldIndexRoute
   '/api/punk-songs': typeof ApiPunkSongsRoute
   '/topics/highest-mountains': typeof TopicsHighestMountainsRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -98,6 +106,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/content-old-index': typeof ContentOldIndexRoute
   '/api/punk-songs': typeof ApiPunkSongsRoute
   '/topics/highest-mountains': typeof TopicsHighestMountainsRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/content-old-index'
     | '/api/punk-songs'
     | '/topics/highest-mountains'
     | '/demo/api/names'
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/content-old-index'
     | '/api/punk-songs'
     | '/topics/highest-mountains'
     | '/demo/api/names'
@@ -136,6 +147,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/content-old-index'
     | '/api/punk-songs'
     | '/topics/highest-mountains'
     | '/demo/api/names'
@@ -149,6 +161,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContentOldIndexRoute: typeof ContentOldIndexRoute
   ApiPunkSongsRoute: typeof ApiPunkSongsRoute
   TopicsHighestMountainsRoute: typeof TopicsHighestMountainsRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
@@ -162,6 +175,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/content-old-index': {
+      id: '/content-old-index'
+      path: '/content-old-index'
+      fullPath: '/content-old-index'
+      preLoaderRoute: typeof ContentOldIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -237,6 +257,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContentOldIndexRoute: ContentOldIndexRoute,
   ApiPunkSongsRoute: ApiPunkSongsRoute,
   TopicsHighestMountainsRoute: TopicsHighestMountainsRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
