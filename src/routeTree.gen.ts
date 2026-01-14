@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ContentOldIndexRouteImport } from './routes/content-old-index'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TopicsLongestSharksRouteImport } from './routes/topics/longest-sharks'
 import { Route as TopicsHighestMountainsRouteImport } from './routes/topics/highest-mountains'
 import { Route as ApiPunkSongsRouteImport } from './routes/api/punk-songs'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
@@ -29,6 +30,11 @@ const ContentOldIndexRoute = ContentOldIndexRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TopicsLongestSharksRoute = TopicsLongestSharksRouteImport.update({
+  id: '/topics/longest-sharks',
+  path: '/topics/longest-sharks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TopicsHighestMountainsRoute = TopicsHighestMountainsRouteImport.update({
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/content-old-index': typeof ContentOldIndexRoute
   '/api/punk-songs': typeof ApiPunkSongsRoute
   '/topics/highest-mountains': typeof TopicsHighestMountainsRoute
+  '/topics/longest-sharks': typeof TopicsLongestSharksRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/content-old-index': typeof ContentOldIndexRoute
   '/api/punk-songs': typeof ApiPunkSongsRoute
   '/topics/highest-mountains': typeof TopicsHighestMountainsRoute
+  '/topics/longest-sharks': typeof TopicsLongestSharksRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/content-old-index': typeof ContentOldIndexRoute
   '/api/punk-songs': typeof ApiPunkSongsRoute
   '/topics/highest-mountains': typeof TopicsHighestMountainsRoute
+  '/topics/longest-sharks': typeof TopicsLongestSharksRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/content-old-index'
     | '/api/punk-songs'
     | '/topics/highest-mountains'
+    | '/topics/longest-sharks'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/content-old-index'
     | '/api/punk-songs'
     | '/topics/highest-mountains'
+    | '/topics/longest-sharks'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/content-old-index'
     | '/api/punk-songs'
     | '/topics/highest-mountains'
+    | '/topics/longest-sharks'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -164,6 +176,7 @@ export interface RootRouteChildren {
   ContentOldIndexRoute: typeof ContentOldIndexRoute
   ApiPunkSongsRoute: typeof ApiPunkSongsRoute
   TopicsHighestMountainsRoute: typeof TopicsHighestMountainsRoute
+  TopicsLongestSharksRoute: typeof TopicsLongestSharksRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
@@ -187,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/topics/longest-sharks': {
+      id: '/topics/longest-sharks'
+      path: '/topics/longest-sharks'
+      fullPath: '/topics/longest-sharks'
+      preLoaderRoute: typeof TopicsLongestSharksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/topics/highest-mountains': {
@@ -260,6 +280,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContentOldIndexRoute: ContentOldIndexRoute,
   ApiPunkSongsRoute: ApiPunkSongsRoute,
   TopicsHighestMountainsRoute: TopicsHighestMountainsRoute,
+  TopicsLongestSharksRoute: TopicsLongestSharksRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
