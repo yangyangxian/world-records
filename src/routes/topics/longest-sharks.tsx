@@ -20,14 +20,24 @@ function RouteComponent() {
             <div className="flex gap-4 items-center">
               <div className="w-40 h-28 md:w-56 md:h-40 bg-black/10 flex items-center justify-center overflow-hidden">
                 {s.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={s.image} alt={s.name} className="w-full h-full object-cover" />
+                  s.wiki ? (
+                    <a href={s.wiki} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={s.image} alt={s.name} className="w-full h-full object-cover" />
+                    </a>
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={s.image} alt={s.name} className="w-full h-full object-cover" />
+                  )
                 ) : (
                   <div className="text-sm text-white/60">No image</div>
                 )}
               </div>
               <div className="flex-1">
                 <div className="text-lg font-semibold">{s.name}</div>
+                {s.name_zh ? (
+                  <div className="text-sm text-white/70">{s.name_zh}</div>
+                ) : null}
                 <div className="text-sm text-white/60 italic">{s.scientific}</div>
                 <div className="text-sm text-white/90 mt-2">{s.length}</div>
               </div>

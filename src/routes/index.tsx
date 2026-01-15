@@ -38,7 +38,7 @@ const topics = [
   {
     title: 'Longest Sharks',
     to: '/topics/longest-sharks',
-    img: sampleImg,
+    img: 'https://www.sharkwater.com/wp-content/uploads/2018/08/whale-shark-rhincodon-typus.jpg',
   },
 ]
 
